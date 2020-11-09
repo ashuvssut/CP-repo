@@ -50,8 +50,6 @@
 		        "kind": "build",
 		        "isDefault": true
 		    }
-		}
+		}// to uncomment line 33 to 53...first comment line 16&17&28to31
 	]
 }
-
-// to uncomment line 33 to 53...first comment line 16&17&28to31
