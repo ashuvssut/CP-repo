@@ -7,3 +7,4 @@ x_cpp_configs/C++_MSVC/.vscode/c_cpp_properties.json
 x_cpp_configs/C++_MSVC/.vscode/launch.json
 x_cpp_configs/C++_MSVC/.vscode/tasks.json
 *.exe
+test.cpp

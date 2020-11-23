@@ -15,7 +15,7 @@ using namespace std;
 #define vi vector<int>
 #define itall(it, x) for (auto it = x.begin(); it != x.end(); it++)
 
-int solve(const vector<int>& numbers) {
+long long solve(const vector<int>& numbers) {
     long long result = 0;
     int n = numbers.size();
     for (int i = 0; i < n; i++) {
@@ -28,7 +28,7 @@ int solve(const vector<int>& numbers) {
 
     return result;
 }
-int solveFast(const vector<int>& numbers) {
+long long solveFast(const vector<int>& numbers) {
     int n = numbers.size();
     int max_index1 = -1;
     for (int i = 0; i < n; i++)
@@ -41,9 +41,31 @@ int solveFast(const vector<int>& numbers) {
             ((max_index2 == -1) || (numbers[j] > numbers[max_index2])))
             max_index2 = j;
 
-    return 0;
+    return ((long long)numbers[max_index1]) * numbers[max_index2];
 }
 
+long long solveFast2(const vector<int>& numbers) {
+    int n;
+    cin >> n;
+    long long first, second, large;
+    for (int i = 0; i < n - 1; i++) {
+        if (i == 0) {
+            cin >> first >> second;
+            large = (second > first) ? second : first;
+            if (second < first) first = second;
+        } else {
+            cin >> second;  // new num
+            if (second > large) {
+                first = large;
+                large = second;
+            }
+            else if(second > first){
+                first = second;
+            }
+        }
+    }
+    cout << large * first;
+}
 int32_t main() {
     fast;
 
@@ -63,7 +85,8 @@ int32_t main() {
         }
         cout << endl;
         auto res1 = solve(a);
-        auto res2 = solveFast(a);
+        // auto res2 = solveFast(a);
+        auto res2 = solveFast2(a);
         if(res1!=res2){
             cout << "Wrong answer: " << res1 << " " << res2 << endl;
             break;
