@@ -1,29 +1,20 @@
-#include<bits/stdc++.h> 
-using namespace std; 
-  
-typedef long long int ll; 
-  
-ll fib(ll f[], ll n) 
-{ 
-    f[0] = 0; 
-    f[1] = 1; 
-    for (ll i = 2; i <= n; i++) 
-        f[i] = (f[i - 1] + f[i - 2]) % 10; 
-  
-    return f[n]; 
-} 
-  
-int findLastDigit(int n) 
-{ 
-    ll f[60] = {0}; 
-  
-    fib(f, 60); 
-  
-    return f[n % 60]; 
-} 
+#include <bits/stdc++.h>
+using namespace std;
+int getFibonacciLastDigit(int n) {
+    int first = 0, second = 1, res;
+
+    for (int i = 2; i <= n; i++) {
+        res = (first + second) % 10;//main catch is that '% 10'
+        first = second;
+        second = res;
+    }
+
+    return res;
+}
+
 int main() {
-    long long n;
-    std::cin >> n;
-    int res2 = findLastDigit(n);
-    std::cout << res2 << '\n';
+    int n;
+    cin >> n;
+    cout << getFibonacciLastDigit(n);
+    return 0;
 }
