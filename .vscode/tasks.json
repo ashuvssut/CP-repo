@@ -5,12 +5,13 @@
 			"type": "cppbuild",
 			"label": "C/C++: g++.exe build & run active file",
 			"command": "C:\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin\\g++.exe",
+			// "command": "C:\\MinGW\\bin\\g++.exe",
 			"args": [
 				//build
 				"-g",
 				"${file}",
 				"-o",
-				"${fileDirname}\\${fileBasenameNoExtension}.exe",
+				"${workspaceFolder}\\${fileBasenameNoExtension}.exe",
 
 				//run
 				// "&&",
@@ -21,6 +22,7 @@
             },
 			"options": {
 				"cwd": "C:\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin"
+				// "cwd": "C:\\MinGW\\bin"
 			},
 			"problemMatcher": [
 				"$gcc"
