@@ -1,13 +1,14 @@
 // C++ STL stream iterator
+#include <vector> 
+#include <string>  
+#include <sstream> 
+#include <iterator> 
+#include <iostream> 
 #include <algorithm>
-#include <iterator>
-#include <iostream>
-#include <string>
-#include <vector>
 
 using namespace std;
 
-int main(void){
+int main(void) {
     // vector container
     vector<string> strvec;
 
@@ -31,15 +32,30 @@ int main(void){
     sort(strvec.begin(), strvec.end());
 
     // print the result
-    cout << "\nstrvec vector data: ";
+    cout << "\nstrvec sorted vector data: ";
 
     for (Iter = strvec.begin(); Iter != strvec.end(); Iter++)
         cout << *Iter << " ";
 
     cout << endl << endl;
 
-    // print all elements without duplicates to standard output
-    unique_copy(strvec.begin(), strvec.end(), ostream_iterator<string>(cout, "\n"));
+    // ostream iteration - method 1
+    cout << "\nprint again:\n";
+    ostringstream vts; //example of ostringstream is std::cout
 
+    // Convert all but the last element to avoid a trailing ","
+    copy(strvec.begin(), strvec.end() - 1, ostream_iterator<string>(vts, ", "));
+    // Now add the last element with no delimiter
+    vts << strvec.back();
+    //PRINT
+    cout << vts.str() << endl;
+
+    // ostream iteration - method 2
+    // print all elements to standard output
+    copy(strvec.begin(), strvec.end() - 1, ostream_iterator<string>(cout, ", "));
+    ostringstream s;
+    s << strvec.back();
+    //PRINT
+    cout << s.str();
     return 0;
 }
