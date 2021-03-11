@@ -7,7 +7,7 @@ int main() {
 
 
   scanf("%d", &integer);
-  fflush(stdin);
+  // fflush(stdin);
   scanf("%c", &character);
 
 
